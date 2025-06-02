@@ -32,12 +32,19 @@ window.onscroll = () => {
     navbar.classList.toggle('sticky', window.scrollY > 100);
 };
 
-// Text animation with TypeWriter effect
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM loaded");
+    console.log("Dynamic text element:", document.getElementById('dynamic-text'));
+    console.log("Cursor element:", document.getElementById('cursor'));
+
+    // Typewriter function directly inside the first (and only) DOMContentLoaded listener
     const typeWriter = function() {
         const roles = ["Researcher", "Coder", "AI/ML Engineer", "Cybersecurity Analyst"];
         const dynamicText = document.getElementById('dynamic-text');
-        if (!dynamicText) return;
+        if (!dynamicText) {
+            console.log("Dynamic text element not found");
+            return;
+        }
         
         let roleIndex = 0;
         let charIndex = 0;
@@ -140,10 +147,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Mobile Menu Toggle
 if (menuIcon) {
-    menuIcon.onclick = () => {
+    menuIcon.onclick = function() {
+        console.log("Menu icon clicked");
         menuIcon.classList.toggle('bx-x');
         navbarMenu.classList.toggle('active');
     };
+    
+    // Add touch event for better mobile response
+    menuIcon.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        console.log("Menu icon touched");
+        menuIcon.classList.toggle('bx-x');
+        navbarMenu.classList.toggle('active');
+    });
 }
 
 // Close menu when clicking on a link

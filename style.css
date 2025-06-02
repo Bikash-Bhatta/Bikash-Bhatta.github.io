@@ -100,9 +100,29 @@ body {
     color: var(--text-color);
     display: none;
     cursor: pointer;
+    z-index: 101;
+}
+
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+    
+    /* Style for the X icon when menu is open */
+    #menu-icon.bx-x {
+        color: var(--main-color); /* Make it more visible */
+    }
 }
 
 /* Mobile styles */
+@media (max-width: 768px) {
+    .home-info h1 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        display: block; /* Ensure visibility */
+    }
+}
+
 @media (max-width: 768px) {
     /* Show menu icon on mobile */
     #menu-icon {
@@ -119,11 +139,11 @@ body {
         background: var(--bg-color);
         border-top: .1rem solid rgba(0, 0, 0, .2);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-        display: none;
+        display: none !important;
     }
     
     .navbar ul.active {
-        display: block;
+        display: block !important;
     }
     
     .navbar ul li {
